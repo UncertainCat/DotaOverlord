@@ -1,0 +1,63 @@
+"DOTAHeroes"
+{
+  "npc_dota_hero_abaddon"
+  {
+    "AbilityLayout"     "6"
+    "override_hero"     "npc_dota_hero_abaddon"
+    "Ability1"          "create_spawner_ability"
+    "Ability2"        	"hero_abilities"
+    "Ability3"        	"create_building_ability"
+    "Ability4"        	"summon_monster_ability"
+    "Ability5"        	"unit_orders_ability"
+    "Ability6"        	"frostmourne_datadriven"
+    "Ability7"        "barebones_empty1"
+    "Ability8"        "barebones_empty2"
+    "Ability9"        "barebones_empty3"
+    "Ability10"       "barebones_empty4"
+    "Ability11"       "barebones_empty5"
+    "Ability12"       "barebones_empty6"
+    "Ability13"       "barebones_empty7"
+    "Ability14"       "barebones_empty8"
+    "Ability15"       "barebones_empty9"
+    "Ability16"       "barebones_empty10"
+
+    "ArmorPhysical"       "10"                 // Physical protection.
+    "MagicalResistance"       "50"                 // Magical protection (percentage).
+    "ModelScale"			"1.01"
+
+    "AttackDamageMin"     "100"                   // Damage range min.
+    "AttackDamageMax"     "120"                   // Damage range max.
+
+    //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
+    "AttributeBaseStrength"   "0"                   // Base strength
+    "AttributeStrengthGain"   "0"                   // Strength bonus per level.
+    "AttributeBaseIntelligence" "0"                   // Base intelligence
+    "AttributeIntelligenceGain" "0"                   // Intelligence bonus per level.
+    "AttributeBaseAgility"    "0"                   // Base agility
+    "AttributeAgilityGain"    "0"                   // Agility bonus per level.
+
+    "BountyXP"          "1000"                 // Experience earn.
+    "BountyGoldMin"       "1000"                   // Gold earned min.
+    "BountyGoldMax"       "1000"                   // Gold earned max.
+
+    //"BoundsHullName"      "DOTA_HULL_SIZE_HERO"
+    //"RingRadius"        "80"
+
+    "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
+    "MovementSpeed"       "380"                 // Speed.
+    "MovementTurnRate"      "1.0"                 // Turning rate.
+
+    "StatusHealth"        "2000"                 // Base health.
+    "StatusHealthRegen"     "4."                 // Health regeneration rate.
+    "StatusMana"        "250"                   // Base mana.
+    "StatusManaRegen"     ".6"                 // Mana regeneration rate.
+
+    "VisionDaytimeRange"    "1400"                  // Range of vision at night time.
+    "VisionNighttimeRange"    "1800"                  // Range of vision at night time.
+  }
+  
+  "npc_dota_hero_drow_ranger" 
+	{
+		"AttackRate"				"1.2"
+	}  
+}

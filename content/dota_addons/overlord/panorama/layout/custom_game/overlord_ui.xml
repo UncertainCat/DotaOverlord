@@ -1,0 +1,22 @@
+<root>
+  <styles>
+    <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+    <include src="file://{resources}/styles/custom_game/overlord_ui.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/overlord_ui.js" /> 
+  </scripts>
+  <Panel hittest="false" class="OverlordBaseHud">
+    <Panel hittest="false" class="OverlordUnitCount">
+		<Label hittest="false" id="OverlordUnitCountText" html="true" text="0/120" /> 	  
+	</Panel>
+ 	<!--		<Label id="OverlordIncomeText" html="true" text="+9999" /> 	     -->	
+	<Panel hittest="false" class="OverlordExpenseBox">
+		<DOTAAbilityImage hittest="false" id="SpawnerImage" abilityname="invoker_forge_spirit" />
+		<Label hittest="false" id="OverlordExpenseText" html="true" text="-" /> 
+		<!--<Image id="SpawnerImage" src="file://{images}/custom_game/overlord_ui/spawner_image.png" /> -->
+	</Panel>
+	
+			
+  </Panel>
+</root>

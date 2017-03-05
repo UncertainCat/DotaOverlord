@@ -1,0 +1,689 @@
+"DOTAAbilities"
+{
+  //Shield
+  "item_example_item"
+  {
+    "ID"              "1836"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+    "BaseClass"           "item_datadriven"
+    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+    "AbilityTextureName"      "item_example_item"
+
+    // Stats
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"        "900"
+    "AbilityCastPoint"        "0.2"
+    "AbilityCooldown"       "13.0"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"       "100"
+    "ItemCost"            "750"
+    "ItemInitialCharges"      "0"
+    "ItemDroppable"         "1"
+    "ItemSellable"          "1"
+    "ItemRequiresCharges"     "0"
+    "ItemShareability"        "ITEM_NOT_SHAREABLE"
+    "ItemDeclarations"        "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+    
+    "MaxUpgradeLevel"       "1"
+    "ItemBaseLevel"         "1"
+    
+    "precache"
+    {
+      "particle"              "particles/frostivus_herofx/queen_shadow_strike_linear_parent.vpcf"
+      "particle_folder"       "particles/test_particle"
+      "soundfile"             "soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+    }
+    "OnSpellStart"
+    {
+      "LinearProjectile"
+      {
+        "EffectName"      "particles/frostivus_herofx/queen_shadow_strike_linear_parent.vpcf"
+        "MoveSpeed"       "%speed"
+        //"StartPosition"   "attach_attack1"
+        "FixedDistance"   "%distance"
+        "StartRadius"     "%radius"
+        "EndRadius"       "%radius"
+        "TargetTeams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "TargetTypes"     "DOTA_UNIT_TARGET_HERO"
+        "TargetFlags"     "DOTA_UNIT_TARGET_FLAG_NONE"
+        "HasFrontalCone"    "0"
+        "ProvidesVision"    "0"
+        "VisionRadius"      "0"
+      }
+      "FireSound"
+      {
+        "EffectName"    "Hero_Abaddon.AphoticShield.Cast"
+        "Target"        "CASTER"
+      }
+      "ApplyModifier"
+      {
+        "Target"      "CASTER"
+        "ModifierName"  "modifier_item_shield"
+      }
+    }
+    
+    "OnProjectileHitUnit"
+    {     
+      "DeleteOnHit" "0"
+      "Damage"
+      {
+        "Target"      "TARGET"
+        "Type"    "DAMAGE_TYPE_PURE"
+        "Damage"  "%damage"
+      }
+    }
+    
+    "Modifiers"
+    {
+      "modifier_item_shield"
+      {
+        "EffectName"    "particles/test_particle/damage_immunity.vpcf"
+        "EffectAttachType"  "follow_origin"
+        "Target"      "CASTER"
+        
+        "Duration" "%duration"
+        "TextureName" "abaddon_aphotic_shield"
+        "Properties"
+        {
+          "MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"    "%damage_reduction"
+        }
+      }
+    }
+    
+    // Special  
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"        "FIELD_FLOAT"
+        "duration"        "4.0"
+      }
+      
+      "02"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "damage_reduction"    "-50"
+      }
+      "03"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "radius"          "150"
+      }
+      "04"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "speed"           "1800"
+      }
+      "05"
+      {
+        "var_type"        "FIELD_FLOAT"
+        "distance"        "900"
+      }
+      "06"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "damage"          "125"
+      }
+    }
+  }
+
+// Build from the rewrite of Healing Salve
+// Author: Rook
+// Date: January 25, 2015
+
+"item_greater_flask"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"item_datadriven"
+	"ID"							"2099"  //Valve's version of this item uses the ID "39".
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+	"AbilityTextureName"			"item_greater_flask"
+	
+	// Stats		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"              "0"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"0"
+	"AbilityCastRange"				"250"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"400"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemAliases"					"healing salve"
+	"ItemAliases"					"greater healing salve"
+	"ItemStackable"					"1"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"buff_duration"			"8"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"total_health_regen"	"800"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"health_per_second"		"100"
+		}
+	}
+	
+	"OnSpellStart"
+	{				
+		"ApplyModifier"
+		{
+			"Target"				"TARGET"
+			"ModifierName"			"modifier_item_greater_flask_datadriven_active"
+		}
+		
+		"FireSound"
+		{
+			"EffectName"			"DOTA_Item.HealingSalve.Activate"
+			"Target"				"TARGET"
+		}
+		"SpendCharge"
+		{}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_item_greater_flask_datadriven_active"
+		{
+			"Duration"              	"%buff_duration"
+			"Passive"					"0"
+			"IsHidden"					"0"
+			"IsBuff"					"1"
+			"IsDebuff"					"0"
+			"IsPurgable"				"1"
+			"TextureName"				"item_greater_flask"
+			"EffectName"            	"particles/items_fx/healing_flask.vpcf"
+			"EffectAttachType"      	"follow_origin"
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%health_per_second"
+			}
+			
+			"OnTakeDamage"
+			{
+				"RemoveModifier"
+				{
+					"Target"			"UNIT"
+					"ModifierName"		"modifier_item_greater_flask_datadriven_active"
+				}
+			}
+		}
+	}
+}
+
+"item_creep_whistle"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"item_datadriven"
+	"ID"							"2100"  //Valve's version of this item uses the ID "39".
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+	"AbilityTextureName"			"item_greevil_whistle_toggle"
+	
+	// Stats		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"              "0"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"0"
+	"AbilityCastRange"				"0"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemStockMax" 					"0" 
+	"ItemStockTime" 				"0"
+	"ItemStockInitial" 				"0"
+	"ItemCost"						"200"
+	"ItemPurchasable" 				"0"	
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemAliases"					"creep whistle"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"					"0"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"1"
+	"SecretShop"   					"0"
+
+	
+	"OnSpellStart"
+	{				
+      	"RunScript"
+		{
+			"ScriptFile"		"abilities/items.lua"
+			"Function"			"whistle"		
+      
+      	}
+	
+		"SpendCharge"
+		{}
+	}
+	
+
+}
+
+"item_skill_book"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"item_datadriven"
+	"ID"							"2101"  
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"Model"							"models/props_items/necronomicon.vmdl"
+	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+	"AbilityTextureName"			"item_skill_book"
+	
+	// Stats		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"              ".1"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"0"
+	"AbilityCastRange"				"250"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemStockMax" 					"3" 
+	"ItemStockTime" 				"120"
+	"ItemStockInitial" 				"1"
+	"ItemPurchasable" 				"1"		
+	"ItemCost"						"800"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemAliases"					"necronomicon"
+	"ItemAliases"					"skill tome"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"					"0"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"1"
+	"SecretShop"   					"1"
+    "SideShop"     					"1" 	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"buff_duration"			"8"
+		}
+
+	}
+	
+	"OnSpellStart"
+	{				
+      	"RunScript"
+		{
+			"ScriptFile"		"abilities/items.lua"
+			"Function"			"skill_book"
+			"Target"			"TARGET"		
+      
+      	}
+	
+		"SpendCharge"
+		{}
+	}	
+}
+
+"item_strange_mushroom"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"item_datadriven"
+	"ID"							"2102"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"Effect"						"particles/generic_gameplay/dropped_item.vpcf"
+	"AbilityTextureName"			"item_winter_mushroom"
+	
+	// Stats		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"              "0"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"0"
+	"AbilityCastRange"				"0"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemStockMax" 					"0" 
+	"ItemStockTime" 				"0"
+	"ItemStockInitial" 				"0"
+	"ItemCost"						"200"
+	"ItemPurchasable" 				"0"	
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemAliases"					"creep whistle"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"					"0"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"1"
+	"SecretShop"   					"0"
+
+	"precache"
+	{
+		"particle" 	"particles/status_fx/status_effect_nightmare.vpcf"
+	}	
+	
+	"OnSpellStart"
+	{				
+      	"RunScript"
+		{
+			"ScriptFile"		"abilities/items.lua"
+			"Function"			"mushroom"	
+			"Duration"			"%duration"
+      
+      	}
+	
+		"SpendCharge"
+		{}
+	}
+	
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"        "FIELD_FLOAT"
+        "duration"        "10.0"
+      }
+      
+	} 
+	
+	"Modifiers"
+	{
+		"modifier_item_strange_mushroom_heal"
+		{
+			"Duration"					"%duration"
+			"Passive"					"0"
+			"IsHidden"					"0"
+			"IsBuff"					"1"
+			"IsDebuff"					"0"
+			"IsPurgable"				"1"
+			"TextureName"				"item_winter_mushroom"
+			"EffectName"            	"particles/items_fx/healing_flask.vpcf"
+			"EffectAttachType"      	"follow_origin"
+			"StatusEffectName"     		"particles/status_fx/status_effect_nightmare.vpcf"
+			"StatusEffectPriority" "10"		
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"50"
+			}
+			
+		}
+		
+		"modifier_item_strange_mushroom_mana"
+		{
+			"Duration"					"%duration"
+			"Passive"					"0"
+			"IsHidden"					"0"
+			"IsBuff"					"1"
+			"IsDebuff"					"0"
+			"IsPurgable"				"1"
+			"TextureName"				"item_winter_mushroom"
+			"EffectName"            	"particles/items_fx/healing_clarity_b.vpcf"
+			"EffectAttachType"      	"follow_origin"
+			"StatusEffectName"     		"particles/status_fx/status_effect_nightmare.vpcf"
+			"StatusEffectPriority" "10"		
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"100"
+			}
+			
+		}	
+		
+		"modifier_item_strange_mushroom_blind"
+		{
+			"Duration"					"%duration"
+			"Passive"					"0"
+			"IsHidden"					"0"
+			"IsBuff"					"1"
+			"IsDebuff"					"1"
+			"IsPurgable"				"1"
+			"TextureName"				"item_winter_mushroom"
+			"StatusEffectName"     		"particles/status_fx/status_effect_nightmare.vpcf"
+			"StatusEffectPriority" "1"			
+			"States"
+			{
+			"MODIFIER_STATE_BLIND"	"MODIFIER_STATE_VALUE_ENABLED"
+			
+			}
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MISS_PERCENTAGE" "80"
+			}			
+		}	
+		
+		"modifier_item_strange_mushroom_magic_immune"
+		{
+			"Duration"					"%duration"
+			"Passive"					"0"
+			"IsHidden"					"0"
+			"IsBuff"					"1"
+			"IsDebuff"					"0"
+			"IsPurgable"				"1"
+			"TextureName"				"item_winter_mushroom"
+			"StatusEffectName"     		"particles/status_fx/status_effect_nightmare.vpcf"
+			"StatusEffectPriority" "1"			
+			"States"
+			{
+			"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+			"Properties"
+			{
+			"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "100"
+			}
+			
+		}		
+		
+		"modifier_item_strange_mushroom_silenced"
+		{
+			"Duration"					"%duration"
+			"Passive"					"0"
+			"IsHidden"					"0"
+			"IsBuff"					"1"
+			"IsDebuff"					"1"
+			"IsPurgable"				"1"
+			"TextureName"				"item_winter_mushroom"
+			"EffectName"            	"particles/generic_gameplay/generic_silence.vpcf"
+			"EffectAttachType"      	"follow_overhead"
+			"StatusEffectName"     		"particles/status_fx/status_effect_nightmare.vpcf"
+			"StatusEffectPriority" "1"			
+			"Properties"
+			{
+			"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" "100"
+			"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "10"				
+			}
+			"States"
+			{
+			"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"		
+			}
+			
+		}		
+		
+		"modifier_item_strange_mushroom_invisible"
+		{
+			"Duration"					"%duration"
+			"Passive"					"0"
+			"IsHidden"					"0"
+			"IsBuff"					"1"
+			"IsDebuff"					"0"
+			"IsPurgable"				"1"
+			"TextureName"				"item_winter_mushroom"
+			"EffectName"            	"particles/generic_gameplay/rune_invisibility.vpcf"
+			"EffectAttachType"      	"follow_origin"
+			"StatusEffectName"     		"particles/status_fx/status_effect_nightmare.vpcf"
+			"StatusEffectPriority" "1"			
+			"States"
+			{
+			"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+			
+		}	
+			
+	
+		"modifier_item_strange_mushroom_haste"
+		{
+			"Duration"					"%duration"
+			"Passive"					"0"
+			"IsHidden"					"0"
+			"IsBuff"					"1"
+			"IsDebuff"					"0"
+			"IsPurgable"				"1"
+			"TextureName"				"item_winter_mushroom"
+			"StatusEffectName"     		"particles/status_fx/status_effect_nightmare.vpcf"
+			"StatusEffectPriority" "10"		
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BASE_OVERRIDE"	"522"
+				"MODIFIER_PROPERTY_TURN_RATE_PERCENTAGE"	"-100"
+			}
+			
+		}		
+
+		"modifier_item_strange_mushroom_min_health"
+		{
+			"Duration"					"%duration"
+			"Passive"					"0"
+			"IsHidden"					"0"
+			"IsBuff"					"1"
+			"IsDebuff"					"0"
+			"IsPurgable"				"1"
+			"TextureName"				"item_winter_mushroom"
+			"StatusEffectName"     		"particles/status_fx/status_effect_nightmare.vpcf"
+			"StatusEffectPriority" "10"		
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MIN_HEALTH"	"300"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "30"
+			}
+			
+		}			
+
+		"modifier_item_strange_mushroom_poison"
+		{
+			"Duration"					"%duration"
+			"Passive"					"0"
+			"IsHidden"					"0"
+			"IsBuff"					"1"
+			"IsDebuff"					"1"
+			"IsPurgable"				"1"
+			"TextureName"				"item_winter_mushroom"
+			"StatusEffectName"     		"particles/status_fx/status_effect_nightmare.vpcf"
+			"StatusEffectPriority" "10"		
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"-1"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "-40"
+			}
+			
+		}
+		"modifier_item_strange_mushroom_speed"
+		{
+			"Duration"					"%duration"
+			"Passive"					"0"
+			"IsHidden"					"0"
+			"IsBuff"					"1"
+			"IsDebuff"					"0"
+			"IsPurgable"				"1"
+			"TextureName"				"item_winter_mushroom"
+			"StatusEffectName"     		"particles/status_fx/status_effect_nightmare.vpcf"
+			"StatusEffectPriority" "10"		
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"400"
+				"MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE" "75"
+				"MODIFIER_PROPERTY_MISS_PERCENTAGE" "20"
+			}
+			
+		}		
+	}
+
+	
+}
+
+"item_pocket_tower"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"item_datadriven"
+	"ID"							"2103"  
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT  | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"Model"							"models/props_structures/tower_dragon_white.vmdl"
+	"AbilityTextureName"			"item_skill_book"
+	
+	// Stats		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"              ".5"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"80"
+	"AbilityCastRange"				"250"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemStockMax" 					"3" 
+	"ItemStockTime" 				"120"
+	"ItemStockInitial" 				"1"
+	"ItemPurchasable" 				"0"		
+	"ItemCost"						"800"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemAliases"					"necronomicon"
+	"ItemAliases"					"pocket tower"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStackable"					"0"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"1"
+    "SideShop"     					"0" 	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"build_time"			"40"
+		}
+
+	}
+	
+	"OnSpellStart"
+	{				
+      	"RunScript"
+		{
+			"ScriptFile"		"abilities/items.lua"
+			"Function"			"pocket_tower"
+			"Target"			"POINT"		
+			"duration"			"%build_time"
+      	}
+	
+		"SpendCharge"
+		{}
+	}	
+}
+ 
+}

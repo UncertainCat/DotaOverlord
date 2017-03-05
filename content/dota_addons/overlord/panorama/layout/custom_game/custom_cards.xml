@@ -1,0 +1,33 @@
+<root>
+ <styles>
+    <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+    <include src="file://{resources}/styles/custom_game/overlord_card.css" />
+
+		<include src="file://{resources}/styles/custom_game/multiteam_hero_select_overlay.css" /> 
+ </styles>
+
+ 	<scripts>
+		<include src="file://{resources}/scripts/custom_game/team_select.js" />
+		<include src="file://{resources}/scripts/custom_game/team_select_player.js" />
+		<include src="file://{resources}/scripts/custom_game/team_select_team.js" />		
+	</scripts>
+
+<Panel hittest="false" class = "OverlordSelectionHud" >
+  <Panel class="TopBar">
+
+
+	</Panel>
+ 
+ <Panel hittest="false" class="CardImage">
+ <!--
+ 	<Panel hittest="false" class="Timer">
+		<Image id="TimerBg" src="file://{images}/status_icons/timer_background.psd" />
+		<Image id="TimerRing" src="file://{images}/status_icons/timer_ring.psd" />
+		<Label id="Timer" text="#HeroSelectionTimer" />
+	</Panel>
+	time is hard-->
+	<Image id="OverlordInfoImage" src="file://{images}/custom_game/overlord_ui/overlord_hero_selection_image.jpg" />  
+	</Panel>
+
+ </Panel>
+</root>

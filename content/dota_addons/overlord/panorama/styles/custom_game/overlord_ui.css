@@ -1,0 +1,123 @@
+.OverlordBaseHud
+{
+    width: 100%;
+    height: 100%;
+    border: 0px solid green;
+	flow-children: down;
+}
+
+.OverlordUnitCount
+{
+    width: 7%;
+    height: 5%;
+    flow-children: down;
+    horizontal-align: right;	
+    margin-top: 64px;
+	margin-right: 20px;
+	border: 0px solid black;
+}
+
+.OverlordExpenseBox
+{
+    width: 8%;
+    height: 20%;
+	margin-top: 0px;
+	margin-right: 0px;  
+    border: 0px solid red;
+    horizontal-align: right;	
+    vertical-align: top;	
+	flow-children: right;
+   // background-image: url("file://{images}/custom_game/overlord_ui/black_box.png");
+}
+
+
+
+
+#OverlordUnits 
+{
+	//not being used
+    flow-children: down;
+    horizontal-align: center;
+    width:50%;
+    opacity: 1;
+    margin-top: 64px;
+    visibility: visible;
+    border: 0px solid blue;
+}
+
+
+#OverlordUnitCountText
+{
+    font-family: Verdana;	
+	color: white;
+    vertical-align: center;
+    horizontal-align: left;
+    text-shadow: 4px 4px 4px #121212;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    border: 0px solid blue;	
+
+}
+
+#OverlordIncomeText
+{
+    font-family: Verdana;
+	color: green;
+    vertical-align: center;
+    horizontal-align: left;
+ text-shadow: 2px 2px 1px #000;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    border: 00px solid blue;	
+	margin-top: -30px;
+	margin-left: 12px;
+	margin-bottom: 0px;
+	margin-right: 10px;
+
+}
+
+#OverlordExpenseText
+{
+	font-family: Verdana;
+    color: #660000;
+    vertical-align: top;
+    horizontal-align: left;
+	text-shadow: 2px 2px 1px #000;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: left;
+	text-overflow: clip;
+    border: 0px solid blue;	
+	margin-top: 8px;
+	margin-left: 8px;	
+	overflow: squish squish;
+
+}
+#SpawnerImage
+{
+	vertical-align:top;
+	horizontal-align: left;
+//	margin-top: -29px;
+//	margin-right: 80px;
+//	margin-left: 30px;
+    width: 45px;
+    height: 45px;
+	border: 3px solid black;
+	background-color: #000000;
+	border-radius: 10px;
+	
+}
+
+@keyframes 'scalein' {
+  from {
+    opacity:0;
+    transform: scaleX(2) scaleY(2);
+  }
+
+  to {
+    opacity:1;
+    transform: scaleX(1) scaleY(1);
+  }
+}

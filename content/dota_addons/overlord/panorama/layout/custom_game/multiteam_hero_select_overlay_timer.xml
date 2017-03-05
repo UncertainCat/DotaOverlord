@@ -1,0 +1,15 @@
+<root>
+	 <scripts>
+    <include src="file://{resources}/scripts/custom_game/custom_timer_script.js" /> 
+	</scripts>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/multiteam_hero_select_overlay.css" />
+	</styles>
+	<Panel hittest="false" class="HeroSelectOverlayTimer">
+		<Image id="TimerBg" src="file://{images}/status_icons/timer_background.psd" />
+		<Image id="TimerRing" src="file://{images}/status_icons/timer_ring.psd" />
+		<Label id="Timer" text="29" />
+		<Label id="TimerLabel" text="#HeroPick" />
+	</Panel>
+</root>

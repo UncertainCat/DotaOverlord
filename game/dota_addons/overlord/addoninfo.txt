@@ -1,0 +1,19 @@
+"AddonInfo"
+{
+  "TeamCount" "2"
+  "maps"      "overlord overlord_vs overlord_vs_2v2"
+  "IsPlayable"  "1"
+  "overlord"
+  {
+          "MaxPlayers"                    "6"
+  }
+  "overlord_vs"
+  {
+          "MaxPlayers"                    "2"
+  }
+  
+  "overlord_vs_2v2"
+  {
+          "MaxPlayers"                    "4"
+  }
+}

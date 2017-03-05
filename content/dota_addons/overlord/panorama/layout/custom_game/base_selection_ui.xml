@@ -1,0 +1,14 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/overlord_card.css" />
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/multiteam_hero_select_overlay.css" />		
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/ui_distribute.js" />
+	</scripts>
+    <Panel class="SelectionRoot" hittest="false">
+
+		<Panel id="TeamSpecificUI" hittest="false"/>
+	</Panel>
+</root>

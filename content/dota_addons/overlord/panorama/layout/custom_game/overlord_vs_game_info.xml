@@ -1,0 +1,48 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/overthrow_game_info.css" />
+	</styles>
+	<Panel class="OverthrowGameInfo">
+		<Panel id="Title">
+			<Label id="TitleName" text="Overlord Vs." />
+		</Panel>
+		<Label id="BriefDescription" text="#overlord_vs_brief_description" />
+
+			<Label id="HowToPlayHeader" class="Header" html="true" text="#overlord_vs_game_info_header_how_to_play" />
+		<!--	<Image id="AbaddonPictures" src="file://{images}/custom_game/game_info/abaddon_concept.png" />	-->
+		<Label id="HowToPlayVs" class = "TipText" html="true" text="#overlord_vs_game_info_how_to_play" />			
+
+
+		<Panel id="TipsRow" class="InfoRow">
+			<Label id="TipText01" class="TipText" html="true" text="#overthrow_game_info_tip01" />		
+			<Panel id="OverlordTip1"	class="InfoRow">
+				<DOTAAbilityImage hittest="false" id="Icon" abilityname="invoker_forge_spirit" />
+				<Label id="OverlordInfo01" html="true" text="#overlord_spawner_info" />
+			</Panel>
+			
+			<Label id="TipText02" class="TipText" html="true" text="#overthrow_game_info_tip02" />
+			<Panel id="OverlordTip2"	class="InfoRow">
+				<DOTAAbilityImage hittest="false" id="Icon" abilityname="shadow_demon_shadow_poison" />
+				<Label id="OverlordInfo02" html="true" text="#overlord_spell_info" />			
+			</Panel>
+			<Label id="TipText03" class="TipText" html="true" text="#overthrow_game_info_tip03" />
+			<Panel id="OverlordTip3"	class="InfoRow">
+				<DOTAAbilityImage hittest="false" id="Icon" abilityname="rattletrap_power_cogs" />
+				<Label id="OverlordInfo03" html="true" text="#overlord_buildings_info" />
+			</Panel>
+			
+			<Label id="TipText04" class="TipText" html="true" text="#overthrow_game_info_tip04" />
+			<Panel id="OverlordTip4"	class="InfoRow">				
+				<Image id="Icon" src="file://{images}/custom_game/game_info/summon_monster.png" />	
+				<Label id="OverlordInfo04" html="true" text="#overlord_summons_info" />
+			</Panel>
+			
+			<Label id="TipText05" class="TipText" html="true" text="#overthrow_game_info_tip05" />
+			<Panel id="OverlordTip5"	class="InfoRow">				
+				<DOTAAbilityImage hittest="false" id="Icon" abilityname="axe_berserkers_call" />		
+				<Label id="OverlordInfo05" html="true" text="#overlord_orders_info" />
+			</Panel>
+		</Panel>
+	</Panel>
+</root>
+
